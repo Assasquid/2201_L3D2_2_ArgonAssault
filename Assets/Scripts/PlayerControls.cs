@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
+    [SerializeField] float throwSpeed = 1f;
     Vector2 moveInput;
 
     void Update()
@@ -23,13 +24,16 @@ public class PlayerControls : MonoBehaviour
 
         float yThrow = moveInput.y;
 
-        float offset = .01f;
-        float newXPos = transform.localPosition.x + offset;
+        float xOffset = xThrow * throwSpeed * Time.deltaTime;
+        float newXPos = transform.localPosition.x + xOffset;
+
+        float yOffset = yThrow * throwSpeed * Time.deltaTime;
+        float newYPos = transform.localPosition.y + yOffset;
 
         transform.localPosition = new Vector3 
         (
             newXPos,
-            transform.localPosition.y,
+            newYPos,
             transform.localPosition.z
         );
     }
