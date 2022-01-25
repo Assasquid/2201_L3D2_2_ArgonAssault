@@ -24,15 +24,25 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float controlYawFactor = 19f;
 
     [Header("Shop Rotation : Roll")]
-    [SerializeField] float controlRollFactor = -90f;
+    [SerializeField] float controlRollFactor = -37f;
+
+    [Header("Canons")]
+    [SerializeField] GameObject[] lasers;
 
     Vector2 moveInput;
     float xThrow;
     float yThrow;
+    bool isFiring;
+
+    void Start()
+    {
+        isFiring = false;
+    }
 
     void Update()
     {
         Move();
+        ProcessFiring();
     }
 
     void OnMove(InputValue value)
@@ -44,6 +54,16 @@ public class PlayerControls : MonoBehaviour
     {
        ProcessTranslation();
        ProcessRotation();
+    }
+
+    void OnFireStart()
+    {
+        isFiring = true;
+    }
+
+    void OnFireStop()
+    {
+        isFiring = false;
     }
 
     void ProcessTranslation()
@@ -83,5 +103,26 @@ public class PlayerControls : MonoBehaviour
         float roll = xThrow * controlRollFactor;
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    void ProcessFiring()
+    {
+        if (isFiring)
+        {
+            SetLasersActive(true);
+        }
+        else
+        {
+            SetLasersActive(false);
+        }
+    }
+
+    void SetLasersActive(bool isActive)
+    {
+        foreach (GameObject laser in lasers)
+        {
+            var emissionModule = laser.GetComponent<ParticleSystem>().emission;
+            emissionModule.enabled = isActive;
+        }
     }
 }
