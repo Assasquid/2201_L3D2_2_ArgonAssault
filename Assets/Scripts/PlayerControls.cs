@@ -66,8 +66,8 @@ public class PlayerControls : MonoBehaviour
 
     void Move()
     {
-       ProcessTranslation();
-       ProcessRotation();
+        ProcessTranslation();
+        ProcessRotation();
     }
 
     void OnFireStart()

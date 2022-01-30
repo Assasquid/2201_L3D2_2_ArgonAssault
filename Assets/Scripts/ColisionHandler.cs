@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ColisionHandler : MonoBehaviour
 {
-    void OnCollisionEnter(Collision other) 
+    float loadDelay = 1f;
+
+    private void OnCollisionEnter(Collision other) 
     {
-        Debug.Log(this.name + "--Collided with--" + other.gameObject.name);    
+        GetComponent<PlayerControls>().enabled = false;
+        StartCoroutine(ReloadLevel());
     }
 
-    void OnTriggerEnter(Collider other) 
+    IEnumerator ReloadLevel()
     {
-        Debug.Log($"{this.name} --Triggered-- {other.gameObject.name}");    
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        yield return new WaitForSeconds(loadDelay);
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }
