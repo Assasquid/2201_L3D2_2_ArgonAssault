@@ -9,6 +9,11 @@ public class ColisionHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) 
     {
+        StartCrashSequence();
+    }
+
+    void StartCrashSequence()
+    {
         GetComponent<PlayerControls>().enabled = false;
         StartCoroutine(ReloadLevel());
     }
