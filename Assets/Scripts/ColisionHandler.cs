@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ColisionHandler : MonoBehaviour
 {
-    float loadDelay = 1f;
+    [SerializeField] float loadDelay = 1f;
+    [SerializeField] ParticleSystem crashVFX;
+    [SerializeField] GameObject car;
+    [SerializeField] GameObject canons;
 
     private void OnCollisionEnter(Collision other) 
     {
@@ -14,6 +17,8 @@ public class ColisionHandler : MonoBehaviour
 
     void StartCrashSequence()
     {
+        crashVFX.Play();
+        GetComponent<MeshRenderer>().enabled = false;
         GetComponent<PlayerControls>().enabled = false;
         StartCoroutine(ReloadLevel());
     }
