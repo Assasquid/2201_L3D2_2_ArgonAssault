@@ -19,6 +19,15 @@ public class ColisionHandler : MonoBehaviour
     {
         crashVFX.Play();
         GetComponent<MeshRenderer>().enabled = false;
+        
+        Component[] meshRenderers;
+        meshRenderers = GetComponentsInChildren<MeshRenderer>();
+
+        foreach(MeshRenderer meshRenderer in meshRenderers)
+        {
+            meshRenderer.enabled = false;
+        }
+
         GetComponent<PlayerControls>().enabled = false;
         StartCoroutine(ReloadLevel());
     }
