@@ -265,6 +265,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ba92f2e1-98b6-406f-8d0e-d7fc36599277",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Fire Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ce2b0670-3d62-484d-9cd0-5edb80b8350a",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
@@ -314,6 +325,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
+                    "action": "Fire Stop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aa66d575-8698-4543-825d-06200f1bd402",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Fire Stop",
                     "isComposite": false,
                     "isPartOfComposite": false

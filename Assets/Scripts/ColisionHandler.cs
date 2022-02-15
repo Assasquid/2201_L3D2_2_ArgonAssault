@@ -20,7 +20,7 @@ public class ColisionHandler : MonoBehaviour
         crashVFX.Play();
         GetComponent<MeshRenderer>().enabled = false;
         
-        Component[] meshRenderers;
+        MeshRenderer[] meshRenderers;
         meshRenderers = GetComponentsInChildren<MeshRenderer>();
 
         foreach(MeshRenderer meshRenderer in meshRenderers)
@@ -28,6 +28,7 @@ public class ColisionHandler : MonoBehaviour
             meshRenderer.enabled = false;
         }
 
+        GetComponent<MeshCollider>().enabled = false;
         GetComponent<PlayerControls>().enabled = false;
         StartCoroutine(ReloadLevel());
     }
