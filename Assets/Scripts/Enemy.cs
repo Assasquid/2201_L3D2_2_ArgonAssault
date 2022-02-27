@@ -15,6 +15,11 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         scoreBoard = FindObjectOfType<ScoreBoard>();
+        /*If script added at the parent level:
+        Rigidbody rigidbody gameObject.AddComponent<Rigidbody>();
+        rigidbody.useGravity = false;
+        This allows to handle collisions at the parent level,
+        even if collider is at the child level.*/
     }
 
     void OnParticleCollision(GameObject other)
