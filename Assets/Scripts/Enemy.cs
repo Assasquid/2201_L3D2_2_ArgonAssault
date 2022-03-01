@@ -6,11 +6,11 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject deathVFX;
     [SerializeField] GameObject hitVFX;
-    [SerializeField] Transform parent;
     [SerializeField] int hitPoints;
     [SerializeField] int pointValue;
 
     ScoreBoard scoreBoard;
+    GameObject parentGameObject;
 
     void Start()
     {
@@ -41,7 +41,8 @@ public class Enemy : MonoBehaviour
     void ReduceHealth()
     {
         GameObject vfx = Instantiate(hitVFX, transform.position, Quaternion.identity);
-        vfx.transform.parent = parent;
+        parentGameObject = GameObject.FindWithTag("EffectsParent");
+        vfx.transform.parent = parentGameObject.transform;
 
         hitPoints--;
         Debug.Log(hitPoints);
@@ -50,7 +51,7 @@ public class Enemy : MonoBehaviour
     void DestroyEnemy()
     {
         GameObject vfx = Instantiate(deathVFX, transform.position, Quaternion.identity);
-        vfx.transform.parent = parent;
+        vfx.transform.parent = parentGameObject.transform;
 
         Destroy(gameObject);
     }
