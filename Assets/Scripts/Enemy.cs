@@ -28,13 +28,13 @@ public class Enemy : MonoBehaviour
         
         if(hitPoints < 1)
         {
+            scoreBoard.IncreaseScore(pointValue);
             DestroyEnemy();
         }
     }
 
     void ProcessHit()
     {
-        scoreBoard.IncreaseScore(pointValue);
         ReduceHealth();
     }
 
