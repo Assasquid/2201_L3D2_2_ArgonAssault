@@ -123,10 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9de82878c028e4d89313e261f10645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathVFX: {fileID: 8372773246918926556, guid: a064fdf7cc7e752499a90b1ddd3fb0b2,
-    type: 3}
+  deathFX: {fileID: 8372773246918926556, guid: a064fdf7cc7e752499a90b1ddd3fb0b2, type: 3}
   hitVFX: {fileID: 8372773246918926556, guid: 81a5339434b23c741ad38505dea675a9, type: 3}
-  parent: {fileID: 0}
   hitPoints: 3
   pointValue: 200
 --- !u!4 &2765006339005835707 stripped

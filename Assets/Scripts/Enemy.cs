@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject deathVFX;
+    [SerializeField] GameObject deathFX;
     [SerializeField] GameObject hitVFX;
     [SerializeField] int hitPoints;
     [SerializeField] int pointValue;
@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
         rigidbody.useGravity = false;
         This allows to handle collisions at the parent level,
         even if collider is at the child level.*/
+        parentGameObject = GameObject.FindWithTag("EffectsParent");
     }
 
     void OnParticleCollision(GameObject other)
@@ -41,7 +42,6 @@ public class Enemy : MonoBehaviour
     void ReduceHealth()
     {
         GameObject vfx = Instantiate(hitVFX, transform.position, Quaternion.identity);
-        parentGameObject = GameObject.FindWithTag("EffectsParent");
         vfx.transform.parent = parentGameObject.transform;
 
         hitPoints--;
@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
 
     void DestroyEnemy()
     {
-        GameObject vfx = Instantiate(deathVFX, transform.position, Quaternion.identity);
+        GameObject vfx = Instantiate(deathFX, transform.position, Quaternion.identity);
         vfx.transform.parent = parentGameObject.transform;
 
         Destroy(gameObject);
